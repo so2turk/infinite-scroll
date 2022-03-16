@@ -1,6 +1,7 @@
 {
-  "singleQuote": true,
-  "arrowParens": "avoid",
-  "printWidth": 120,
-  "semi": false
+ "eslintIntegration": true,
+ "singleQuote": true,
+ "arrowParens": "avoid",
+ "printWidth": 120,
+ "semi": false
 }
