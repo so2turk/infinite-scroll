@@ -15,6 +15,11 @@ const routes = [
     name: 'Numbers',
     component: () => import('../views/numbers.vue'),
   },
+  {
+    path: '/colors',
+    name: 'Colors',
+    component: () => import('../views/colors.vue'),
+  },
 ]
 
 const router = new VueRouter({
