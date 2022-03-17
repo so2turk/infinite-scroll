@@ -16,7 +16,7 @@ export default {
   methods: {
     handleScroll() {
       window.onscroll = () => {
-        if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
+        if (window.innerHeight + document.documentElement.scrollTop + 0.5 === document.documentElement.offsetHeight) {
           this.loadMore()
           this.more = true
         }
@@ -34,9 +34,11 @@ export default {
 </script>
 
 <template>
-  <div id="numbers">
-    <div id="number" v-for="n in numbers" :key="n">
-      {{ n }}
+  <div>
+    <div id="numbers">
+      <div id="number" v-for="n in numbers" :key="n">
+        {{ n }}
+      </div>
     </div>
     <div id="loadMore" v-if="{ more }">Load more</div>
   </div>
