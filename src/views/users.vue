@@ -41,6 +41,10 @@ export default {
         this.more = false
       }, 1500)
     },
+
+    randomUser() {
+      return Math.floor(Math.random() * this.users.results.length)
+    },
   },
 }
 </script>
@@ -49,7 +53,7 @@ export default {
   <div>
     <div v-if="users" id="users">
       <div id="user" v-for="n in numbers" :key="n">
-        <UserCard :user="users.results[n]" />
+        <UserCard :user="users.results[randomUser()]" />
       </div>
     </div>
     <div id="loadMore" v-if="{ more }">Load more</div>
