@@ -20,6 +20,11 @@ const routes = [
     name: 'Colors',
     component: () => import('../views/colors.vue'),
   },
+  {
+    path: '/users',
+    name: 'Users',
+    component: () => import('../views/users.vue'),
+  },
 ]
 
 const router = new VueRouter({
