@@ -5,14 +5,24 @@ export default {
     return {
       more: false,
       numbers: Array.from({ length: 30 }, (_, i) => i + 1),
+      users: null,
     }
   },
 
   created() {
+    this.getUsers()
     this.handleScroll()
   },
 
   methods: {
+    async getUsers() {
+      try {
+        const res = await fetch('https://randomuser.me/api/?results=100')
+        this.users = await res.json()
+      } catch (err) {
+        console.log(err)
+      }
+    },
     handleScroll() {
       window.onscroll = () => {
         if (window.innerHeight + document.documentElement.scrollTop + 0.5 === document.documentElement.offsetHeight) {
