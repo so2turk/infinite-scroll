@@ -1,6 +1,9 @@
 <script>
+import UserCard from '../components/user-card.vue'
+
 export default {
   name: 'Users',
+  components: { UserCard },
   data() {
     return {
       more: false,
@@ -46,7 +49,7 @@ export default {
   <div>
     <div v-if="users" id="users">
       <div id="user" v-for="n in numbers" :key="n">
-        {{ n }}
+        <UserCard :user="users.results[n]" />
       </div>
     </div>
     <div id="loadMore" v-if="{ more }">Load more</div>
