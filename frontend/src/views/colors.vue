@@ -5,7 +5,7 @@ export default {
   data() {
     return {
       more: false,
-      numbers: Array.from({ length: 50 }, () => '#' + ((Math.random() * 0xffffff) << 0).toString(16)),
+      colors: Array.from({ length: 50 }, () => '#' + ((Math.random() * 0xffffff) << 0).toString(16)),
     }
   },
 
@@ -25,8 +25,8 @@ export default {
 
     loadMore() {
       setTimeout(() => {
-        this.numbers = [
-          ...this.numbers,
+        this.colors = [
+          ...this.colors,
           ...Array.from({ length: 50 }, () => '#' + ((Math.random() * 0xffffff) << 0).toString(16)),
         ]
         this.more = false
@@ -39,8 +39,8 @@ export default {
 <template>
   <div>
     <div id="numbers">
-      <div id="number" v-for="n in numbers" :key="n" :style="{ backgroundColor: n }">
-        {{ n }}
+      <div id="number" v-for="color in colors" :key="color" :style="{ backgroundColor: color }">
+        {{ color }}
       </div>
     </div>
     <div id="loadMore" v-if="{ more }">Load more</div>

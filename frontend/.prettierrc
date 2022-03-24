@@ -2,6 +2,7 @@
  "eslintIntegration": true,
  "singleQuote": true,
  "arrowParens": "avoid",
- "printWidth": 120,
+ "printWidth": 80,
+ "trailingComma": "none",
  "semi": false
 }
