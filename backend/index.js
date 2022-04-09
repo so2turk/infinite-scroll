@@ -2,8 +2,11 @@ import express from 'express'
 import { ApolloServer } from 'apollo-server-express'
 import typeDefs from './models/schemaRU.js'
 import resolvers from './models/resolverRU.js'
+import cors from 'cors'
 
 const app = express()
+app.use(express.json())
+app.use(cors())
 
 const server = new ApolloServer({
   typeDefs,
