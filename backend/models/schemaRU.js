@@ -2,8 +2,8 @@ import { gql } from 'apollo-server-express'
 
 const typeDefs = gql`
     type Query {
-      getUser (gender: String): [User!]!
-      getUsers (people: Int, gender: String): [User!]!
+      getUser (gender: String!): [User!]!
+      getUsers (numOfUsers: String!, gender: String!): [User!]!
     }
     
     type User {
@@ -34,6 +34,7 @@ const typeDefs = gql`
       postcode: String!
       coordinates: Coordinates!
       timezone: Timezone!
+      country: String!
     }
 
     type Coordinates {

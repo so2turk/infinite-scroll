@@ -8,8 +8,8 @@ const resolvers = {
       return data.results;
     },
     
-    getUsers: async (_, { people = 1, gender = 'all' }) => {
-      const response = await fetch(`https://randomuser.me/api/?results=${people}&gender=${gender}`);
+    getUsers: async (root, args) => {
+      const response = await fetch(`https://randomuser.me/api/?results=${args.numOfUsers}&gender=${args.gender}`);
       const data = await response.json();
       return data.results;
     }
