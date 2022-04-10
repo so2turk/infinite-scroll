@@ -25,6 +25,11 @@ const routes = [
     name: 'Users',
     component: () => import('../views/users.vue'),
   },
+  {
+    path: '/users-apollo',
+    name: 'UsersApollo',
+    component: () => import('../views/users-apollo.vue'),
+  },
 ]
 
 const router = new VueRouter({
