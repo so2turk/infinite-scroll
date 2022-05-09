@@ -1,14 +1,46 @@
 <script>
 import UserCard from '../components/user-card.vue'
+import gql from 'graphql-tag'
+
+const numOfUsers = '100'
+const gender = 'all'
 
 export default {
-  name: 'Users',
+  name: 'UserApollo',
   components: { UserCard },
   data() {
     return {
       more: false,
       numbers: Array.from({ length: 30 }, (_, i) => i + 1),
-      users: null
+      getUsers: null
+    }
+  },
+  apollo: {
+    getUsers: {
+      query: gql`
+        query GetUsers($numOfUsers: String!, $gender: String!) {
+          getUsers(numOfUsers: $numOfUsers, gender: $gender) {
+            name {
+              first
+              last
+            }
+            location {
+              country
+            }
+            picture {
+              large
+            }
+            id {
+              value
+            }
+          }
+        }
+      `,
+      fetchPolicy: 'no-cache',
+      variables: {
+        numOfUsers,
+        gender
+      }
     }
   },
 
@@ -40,7 +72,7 @@ export default {
     },
 
     randomUser() {
-      return Math.floor(Math.random() * this.users.results.length)
+      return Math.floor(Math.random() * this.getUsers.length)
     }
   }
 }
@@ -48,9 +80,9 @@ export default {
 
 <template>
   <div>
-    <div v-if="users" id="users">
+    <div v-if="getUsers" id="users">
       <div id="user" v-for="n in numbers" :key="n">
-        <UserCard />
+        <UserCard :user="getUsers[randomUser()]" />
       </div>
     </div>
     <div id="loadMore" v-if="{ more }">Load more</div>
