@@ -7,8 +7,8 @@ export default {
       firstName: null,
       lastName: null,
       photo: null,
-      username: null,
       country: null,
+      id: null
     }
   },
   mounted() {
@@ -20,16 +20,16 @@ export default {
       this.firstName = this.user.name.first
       this.lastName = this.user.name.last
       this.photo = this.user.picture.large
-      this.username = this.user.login.username
       this.country = this.user.location.country
-    },
-  },
+      this.id = this.user.id.value
+    }
+  }
 }
 </script>
 
 <template>
   <div class="userCard">
-    <img class="photo" :src="photo" :alt="username" />
+    <img class="photo" :src="photo" :alt="id" />
     <div class="userName">{{ firstName }} {{ lastName }}</div>
     <div class="userInfo">{{ country }}</div>
   </div>
